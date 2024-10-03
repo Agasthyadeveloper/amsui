@@ -6,18 +6,18 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { HeaderComponent } from './common/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProjectComponent } from './components/civil/project/project.component';
+import { AddContentsComponent } from './components/marketing/add-contents/add-contents.component';
+import { UpdateContentComponent } from './components/marketing/update-content/update-content.component';
+import { ContentStatusComponent } from './components/marketing/content-status/content-status.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'sidebar', component:SidebarComponent },
-  { path: 'header', component:HeaderComponent },
-  { path: 'dashboard', component:DashboardComponent },
-  { path: 'civil/property', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'projects', component: ProjectComponent },
-  { path: 'civil/employees', component: DashboardComponent },
-  { path: 'marketing/digital', component: DashboardComponent },
-  { path: 'marketing/leads', component: DashboardComponent },
+  { path: 'add-contents', component: AddContentsComponent },
+  { path: 'Update-contents', component: UpdateContentComponent },
+  { path: 'content-status', component: ContentStatusComponent },
 ];
 
 @NgModule({

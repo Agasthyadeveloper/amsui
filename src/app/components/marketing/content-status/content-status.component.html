@@ -1,0 +1,123 @@
+<app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
+<app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
+<div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }" >
+<div class="container mt-5">
+  <h3 class="text-center">Content Tracker (Content Creations)</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="table-custom-header">
+          <th scope="col">S.No</th>
+          <th scope="col">Tasks</th>
+          <th scope="col">Quantity (Goal)</th>
+          <th scope="col">Quality (Goal)</th>
+          <th scope="col">Start Date (Goal)</th>
+          <th scope="col">Completion Date (Goal)</th>
+          <th scope="col">No of Days (Goal)</th>
+          <th scope="col">Quantity (Actual)</th>
+          <th scope="col">Quality (Actual)</th>
+          <th scope="col">Start Date (Actual)</th>
+          <th scope="col">Completion Date (Actual)</th>
+          <th scope="col">No of Days (Actual)</th>
+          <th scope="col">Process Status</th>
+          <th scope="col">Assigned</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Blogs</td>
+          <td>11</td>
+          <td>11</td>
+          <td>2 September</td>
+          <td>6 September</td>
+          <td>5</td>
+          <td>11</td>
+          <td>11</td>
+          <td>2 September</td>
+          <td>6 September</td>
+          <td>5</td>
+          <td class="status-completed text-center">Completed</td>
+          <td class="text-center">Yoganandhan</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Vlogs</td>
+          <td>12</td>
+          <td>12</td>
+          <td>2 September</td>
+          <td>3 September</td>
+          <td>2</td>
+          <td>12</td>
+          <td>12</td>
+          <td>2 September</td>
+          <td>3 September</td>
+          <td>2</td>
+          <td class="status-completed text-center">Completed</td>
+          <td class="assigned-team text-center">Team</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Posters</td>
+          <td>120</td>
+          <td>120</td>
+          <td>2 September</td>
+          <td>5 September</td>
+          <td>3</td>
+          <td>120</td>
+          <td>120</td>
+          <td>2 September</td>
+          <td>5 September</td>
+          <td>3</td>
+          <td class="status-completed text-center">Completed</td>
+          <td class="assigned-team text-center">Team</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Reels</td>
+          <td>20</td>
+          <td>20</td>
+          <td>2 September</td>
+          <td>4 September</td>
+          <td>3</td>
+          <td>20</td>
+          <td>20</td>
+          <td>2 September</td>
+          <td>4 September</td>
+          <td>3</td>
+          <td class="status-completed text-center">Completed</td>
+          <td class="assigned-team text-center">Team</td>
+        </tr>
+        <tr class="table-light-yellow">
+          <td>5</td>
+          <td>Testimonials</td>
+          <td colspan="11" class="text-center">Nil</td>
+          <td class="status-not-planned text-center">Not Planned</td>
+          <td class="assigned-not text-center">Not Assigned</td>
+        </tr>
+        <tr class="table-light-yellow">
+          <td>6</td>
+          <td>Case Study</td>
+          <td colspan="11" class="text-center">Nil</td>
+          <td class="status-not-planned text-center">Not Planned</td>
+          <td class="assigned-not text-center">Not Assigned</td>
+        </tr>
+        <tr class="table-light-yellow">
+          <td>7</td>
+          <td>Contest</td>
+          <td colspan="11" class="text-center">Nil</td>
+          <td class="status-not-planned text-center">Not Planned</td>
+          <td class="assigned-not text-center">Not Assigned</td>
+        </tr>
+        <tr class="table-light-yellow">
+          <td>8</td>
+          <td>Offers</td>
+          <td colspan="11" class="text-center">Nil</td>
+          <td class="status-not-planned text-center">Not Planned</td>
+          <td class="assigned-not text-center">Not Assigned</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

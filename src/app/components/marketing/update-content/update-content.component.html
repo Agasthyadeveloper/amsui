@@ -1,0 +1,51 @@
+<app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
+<app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
+<div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }">
+    <div class="container card-margin">
+        <div class="card shadow">
+            <div class="card-header text-center">
+                <h2>Update Task</h2>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label>Task Name:</label>
+                        <input type="text" class="custom-input" placeholder="Enter quantity" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Task Quantity:</label>
+                        <input type="number" class="custom-input" placeholder="Enter quantity" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label>Task Quality:</label>
+                        <input type="text" class="custom-input" placeholder="Enter quality" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Started Date:</label>
+                        <input type="date" class="custom-input" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label>Completed Date:</label>
+                        <input type="date" class="custom-input" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Number of Dates:</label>
+                        <input type="number" class="custom-input" placeholder="Enter number of dates" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label>Completed By:</label>
+                        <input type="text" class="custom-input" placeholder="Enter name" />
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+                <button class="submit-btn"><i class="fa-regular fa-pen-to-square"></i>&nbsp;Update</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+.table-custom-header {
+    background-color: #800040;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+  .table-light-yellow {
+    background-color: #FFF2CC;
+  }
+  .status-completed {
+    background-color: #28a745;
+    color: white;
+  }
+  .status-not-planned {
+    background-color: #dc3545;
+    color: white;
+  }
+  .assigned-team {
+    background-color: #6c757d;
+    color: white;
+  }
+  .assigned-not {
+    background-color: #ffc107;
+    color: white;
+  }
