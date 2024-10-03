@@ -1,7 +1,7 @@
 <app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
 <app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
 <div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }">
-    <div class="container card-margin">
+    <!-- <div class="container card-margin">
         <div class="card shadow">
             <div class="card-header text-center">
                 <h2>Add Task</h2>
@@ -42,9 +42,184 @@
                         <label>Assigned By:</label>
                         <input type="text" class="custom-input" placeholder="Enter name" />
                     </div>
-                    <div class="col-md-6"></div> <!-- Empty column for spacing -->
+                    <div class="col-md-6"></div>
                 </div>
                 <button class="submit-btn"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Create</button>
+            </div>
+        </div>
+    </div> -->
+    <div style="margin-top: 5%;" class="container">
+        <!-- Dropdown for selecting module -->
+        <div class="form-group">
+            <label for="moduleSelect">Select Module</label>
+            <select class="custom-input" id="moduleSelect" [(ngModel)]="selectedModule">
+                <option value="" disabled>Select a Module</option>
+                <option *ngFor="let module of modules" [value]="module">{{module}}</option>
+            </select>
+        </div>
+
+        <!-- Conditionally display the form based on the selected module -->
+        <div *ngIf="selectedModule === 'Content Tracker'" class="container card-margin">
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h2>Content Tracker</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Task Name:</label>
+                            <input type="text" class="custom-input" placeholder="Enter quantity" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Task Quantity:</label>
+                            <input type="number" class="custom-input" placeholder="Enter quantity" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Task Quality:</label>
+                            <input type="text" class="custom-input" placeholder="Enter quality" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Start Date:</label>
+                            <input type="date" class="custom-input" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>End Date:</label>
+                            <input type="date" class="custom-input" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Number of Dates:</label>
+                            <input type="number" class="custom-input" placeholder="Enter number of dates" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Assigned By:</label>
+                            <input type="text" class="custom-input" placeholder="Enter name" />
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
+                    <button class="submit-btn"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Create</button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="selectedModule === 'Collateral Tracker'" class="container card-margin">
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h2>Collateral Tracker</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Task Name:</label>
+                            <input type="text" class="custom-input" placeholder="Enter quantity" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Task Quantity:</label>
+                            <input type="number" class="custom-input" placeholder="Enter quantity" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Task Quality:</label>
+                            <input type="text" class="custom-input" placeholder="Enter quality" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Cost:</label>
+                            <input type="text" class="custom-input" placeholder="Enter quality" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Start Date:</label>
+                            <input type="date" class="custom-input" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>End Date:</label>
+                            <input type="date" class="custom-input" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Number of Dates:</label>
+                            <input type="number" class="custom-input" placeholder="Enter number of dates" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Assigned By:</label>
+                            <input type="text" class="custom-input" placeholder="Enter name" />
+                        </div>
+                    </div>
+                    <button class="submit-btn"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Create</button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="selectedModule === 'Marketing Calender'" class="container card-margin">
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h2>Marketing Calender (Online & Offline Activites)</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Task Name:</label>
+                            <input type="text" class="custom-input" placeholder="Enter quantity" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Task Quantity:</label>
+                            <input type="number" class="custom-input" placeholder="Enter quantity" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Task Quality:</label>
+                            <input type="text" class="custom-input" placeholder="Enter quality" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Cost:</label>
+                            <input type="text" class="custom-input" placeholder="Enter quality" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Start Date:</label>
+                            <input type="date" class="custom-input" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>End Date:</label>
+                            <input type="date" class="custom-input" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Number of Dates:</label>
+                            <input type="number" class="custom-input" placeholder="Enter number of dates" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Assigned By:</label>
+                            <input type="text" class="custom-input" placeholder="Enter name" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label>Frequency:</label>
+                            <input type="text" class="custom-input" placeholder="Enter number of dates" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="moduleSelect">Select Mode</label>
+                            <select class="custom-input">
+                                <option value="" disabled>Select a Mode</option>
+                                <option>Online</option>
+                                <option>Offline</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="submit-btn"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Create</button>
+                </div>
             </div>
         </div>
     </div>
