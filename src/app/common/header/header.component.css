@@ -1,0 +1,82 @@
+/* Apply background styling */
+.header {
+  position: fixed; /* Keep header fixed at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  padding: 10px 20px;
+  background: rgba(128, 0, 255, 0.6); /* Violet with transparency */
+  backdrop-filter: blur(8px); /* Apply background blur */
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Make sure it stays on top of content */
+  transition: margin-left 0.5s;
+  margin: 10px;
+  margin-bottom: 10%;
+}
+
+/* Container for right-aligned elements */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Add spacing between elements */
+}
+
+/* Style the menu button */
+.menu-btn {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.menu-btn i {
+  transition: transform 0.3s ease;
+}
+
+.menu-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Style the profile image */
+.circle-profile img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%; /* Make it circular */
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.circle-profile img:hover {
+  transform: scale(1.1);
+}
+
+.mgs-icon{
+  color: white;
+  width: 30px;
+  height: 30px;
+}
+.msg-box{
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.msg-box:hover {
+  transform: scale(1.2);
+}
+/* Style the message icon */
+
+
+  @media screen and (max-width: 768px) {
+    .header {
+      margin-left: 0;
+      transition: margin-left 0.5s;
+    }
+}

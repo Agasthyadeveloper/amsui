@@ -1,0 +1,32 @@
+<div class="log-container">
+    <div class="left-side">
+        <div class="img-container">
+            <div>
+                <img class="logo-style" src="assets/images/logo-1.png" alt="">
+            </div>
+            <div>
+                <img class="logo-font" src="assets/images/agasthya-font.png" alt="">
+                <h6 class="dev-txt">DEVELOPERS</h6>
+                <h6 class="pvt-txt">PRIVATE LIMITED</h6><br><br>
+            </div>
+        </div>
+    </div>
+    <div class="right-side">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form>
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input placeholder="email" type="email" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input [type]="passwordFieldType" placeholder="password" id="password" name="password">
+                    <i class="far" [ngClass]="passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash'"
+                        (click)="togglePasswordVisibility()"></i>
+                </div>
+               <a routerLink="/dashboard"><button type="submit">Login</button></a>
+            </form>
+        </div>
+    </div>
+</div>

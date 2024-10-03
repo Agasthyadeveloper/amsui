@@ -1,0 +1,101 @@
+.logo-img{
+    margin: 12%;
+}
+
+#sidenav {
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #5e0f80;
+    z-index: 2;
+    transition: 0.5s;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#sidenav::-webkit-scrollbar {
+    width: 8px;
+}
+
+#sidenav::-webkit-scrollbar-track {
+    background: #5e0f80;
+}
+
+#sidenav::-webkit-scrollbar-thumb {
+    background-color: #a347b5;
+    border-radius: 5px;
+}
+
+nav ul {
+    padding: 10px;
+    margin: 0;
+}
+
+nav ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s;
+}
+
+.icon-bg {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    color: gray;
+    text-align: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(58, 4, 58, 0.808);
+    border-radius: 5px;
+    transform: translateY(-50%) scale(0);
+    transition: transform 0.3s;
+    z-index: -1;
+}
+
+nav ul li a:hover::before {
+    transform: translateY(-50%) scale(1);
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+nav ul li a i.fa {
+    margin-left: auto;   
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+nav ul li a i.fa.fa-chevron-down {
+    transform: rotate(0deg);
+}
+
+nav ul li a i.fa.fa-chevron-right {
+    transform: rotate(90deg);
+}
+
+.active a {
+    background-color: #f48d3a;
+}

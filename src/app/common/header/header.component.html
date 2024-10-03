@@ -1,0 +1,36 @@
+<!-- <nav class="header" [ngStyle]="{ 'margin-left': !isSidebarOpen ? '250px' : '0px' }">
+    <div class="menu-btn" (click)="toggleSidebar()">
+        <ng-container *ngIf="!isSidebarOpen">
+            <i class="fa-solid fa-xmark"></i>         
+        </ng-container>
+        <ng-container *ngIf="isSidebarOpen">
+            <i class="fa-solid fa-bars"></i>
+        </ng-container>
+    </div>
+    <div class="circule-profile">
+        <img src="assets/images/profile.png" alt="">
+    </div>
+    <div class="mgs-box">
+        <i class="fa-solid fa-envelope"></i>
+    </div>
+</nav> -->
+
+
+    <nav class="header" [ngStyle]="{ 'margin-left': !isSidebarOpen ? '260px' : '10px' }">
+        <div class="nav-right">
+            <div class="menu-btn" (click)="toggleSidebar()">
+                <ng-container *ngIf="!isSidebarOpen">
+                    <i class="fa-solid fa-xmark"></i>
+                </ng-container>
+                <ng-container *ngIf="isSidebarOpen">
+                    <i class="fa-solid fa-bars"></i>
+                </ng-container>
+            </div>
+            <div class="msg-box">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="circle-profile">
+                <img src="assets/images/profile.png" alt="Profile Image">
+            </div>
+        </div>
+    </nav>

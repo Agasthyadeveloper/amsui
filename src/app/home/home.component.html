@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clean Homes</title>
+    <style>
+        /* @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap'); */
+        @import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+        .welcome-txt {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 4s steps(40, end);
+            font-family: "Protest Guerrilla", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.5;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="banner">
+        <div class="banner-text">
+            <img class="logo-size" src="assets/images/logo-1.png" alt=""><br>
+            <img src="assets/images/agasthya-font.png" alt="">
+            <h6 class="dev-txt">DEVELOPERS</h6>
+            <h6 class="pvt-txt">PRIVATE LIMITED</h6><br><br>
+            <h2 class="welcome-txt">Welcome To Agasthya Management System</h2> <br>
+            <a href="" routerLink="/login"><button type="submit">Login</button></a>
+            <!-- <a href="" routerLink="/sidebar"><button>sidebar</button></a> -->
+        </div>
+    </section>
+</body>
+</html>

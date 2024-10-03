@@ -1,0 +1,55 @@
+<div id="sidenav" [ngStyle]="{ 'width': isOpen ? '250px' : '0px' }">
+  <div>
+    <img class="logo-img" src="assets/images/sidebar-logo.png" alt="">
+  </div>
+  <nav>
+    <ul>
+      <li [routerLinkActive]="['active']">
+        <a routerLink="/dashboard"><span class="icon-bg"><i class="fa fa-home"
+              aria-hidden="true"></i></span>Dashboard</a>
+      </li>
+      <li>
+        <a (click)="toggleMenu('civil')">
+          <span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Civil
+          <i class="fa"
+            [ngClass]="{'fa-chevron-down': isMenuExpanded('civil'), 'fa-chevron-right': !isMenuExpanded('civil')}"
+            aria-hidden="true"></i>
+        </a>
+        <ul *ngIf="isMenuExpanded('civil')">
+          <li><a href="#">Submenu Item 1</a></li>
+          <li><a href="#">Submenu Item 2</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a (click)="toggleMenu('marketing')">
+          <span class="icon-bg"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>></span>Marketing
+          <i class="fa"
+            [ngClass]="{'fa-chevron-down': isMenuExpanded('marketing'), 'fa-chevron-right': !isMenuExpanded('marketing')}"
+            aria-hidden="true"></i>
+        </a>
+        <ul *ngIf="isMenuExpanded('marketing')">
+          <li><a href="#">Submenu Item 1</a></li>
+          <li><a href="#">Submenu Item 2</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a (click)="toggleMenu('sales')">
+          <span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Sales
+          <i class="fa"
+            [ngClass]="{'fa-chevron-down': isMenuExpanded('sales'), 'fa-chevron-right': !isMenuExpanded('sales')}"
+            aria-hidden="true"></i>
+        </a>
+        <ul *ngIf="isMenuExpanded('sales')">
+          <li><a href="#">Submenu Item 1</a></li>
+          <li><a href="#">Submenu Item 2</a></li>
+        </ul>
+      </li>
+
+      <li><a><span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Purchase</a></li>
+      <li><a><span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Accounts</a></li>
+      <li><a><span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Legal</a></li>
+    </ul>
+  </nav>
+</div>
