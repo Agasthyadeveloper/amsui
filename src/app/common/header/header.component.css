@@ -9,7 +9,7 @@
   align-items: center;
   height: 60px;
   padding: 10px 20px;
-  background: rgba(128, 0, 255, 0.6); /* Violet with transparency */
+  background: #ac5ff9; /* Violet with transparency */
   backdrop-filter: blur(8px); /* Apply background blur */
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);

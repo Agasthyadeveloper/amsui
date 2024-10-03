@@ -60,9 +60,7 @@ body {
     display: flex;
     padding: 20px;
     height: 100vh;
-    /* Adjusting for padding */
     box-sizing: border-box;
-    /* Ensures padding is included in height */
     background-color: #f0f0f0;
     overflow: auto;
 }
