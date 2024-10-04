@@ -1,123 +1,403 @@
 <app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
 <app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
-<div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }" >
-<div class="container mt-5">
-  <h3 class="text-center">Content Tracker (Content Creations)</h3>
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr class="table-custom-header">
-          <th scope="col">S.No</th>
-          <th scope="col">Tasks</th>
-          <th scope="col">Quantity (Goal)</th>
-          <th scope="col">Quality (Goal)</th>
-          <th scope="col">Start Date (Goal)</th>
-          <th scope="col">Completion Date (Goal)</th>
-          <th scope="col">No of Days (Goal)</th>
-          <th scope="col">Quantity (Actual)</th>
-          <th scope="col">Quality (Actual)</th>
-          <th scope="col">Start Date (Actual)</th>
-          <th scope="col">Completion Date (Actual)</th>
-          <th scope="col">No of Days (Actual)</th>
-          <th scope="col">Process Status</th>
-          <th scope="col">Assigned</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Blogs</td>
-          <td>11</td>
-          <td>11</td>
-          <td>2 September</td>
-          <td>6 September</td>
-          <td>5</td>
-          <td>11</td>
-          <td>11</td>
-          <td>2 September</td>
-          <td>6 September</td>
-          <td>5</td>
-          <td class="status-completed text-center">Completed</td>
-          <td class="text-center">Yoganandhan</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Vlogs</td>
-          <td>12</td>
-          <td>12</td>
-          <td>2 September</td>
-          <td>3 September</td>
-          <td>2</td>
-          <td>12</td>
-          <td>12</td>
-          <td>2 September</td>
-          <td>3 September</td>
-          <td>2</td>
-          <td class="status-completed text-center">Completed</td>
-          <td class="assigned-team text-center">Team</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Posters</td>
-          <td>120</td>
-          <td>120</td>
-          <td>2 September</td>
-          <td>5 September</td>
-          <td>3</td>
-          <td>120</td>
-          <td>120</td>
-          <td>2 September</td>
-          <td>5 September</td>
-          <td>3</td>
-          <td class="status-completed text-center">Completed</td>
-          <td class="assigned-team text-center">Team</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Reels</td>
-          <td>20</td>
-          <td>20</td>
-          <td>2 September</td>
-          <td>4 September</td>
-          <td>3</td>
-          <td>20</td>
-          <td>20</td>
-          <td>2 September</td>
-          <td>4 September</td>
-          <td>3</td>
-          <td class="status-completed text-center">Completed</td>
-          <td class="assigned-team text-center">Team</td>
-        </tr>
-        <tr class="table-light-yellow">
-          <td>5</td>
-          <td>Testimonials</td>
-          <td colspan="11" class="text-center">Nil</td>
-          <td class="status-not-planned text-center">Not Planned</td>
-          <td class="assigned-not text-center">Not Assigned</td>
-        </tr>
-        <tr class="table-light-yellow">
-          <td>6</td>
-          <td>Case Study</td>
-          <td colspan="11" class="text-center">Nil</td>
-          <td class="status-not-planned text-center">Not Planned</td>
-          <td class="assigned-not text-center">Not Assigned</td>
-        </tr>
-        <tr class="table-light-yellow">
-          <td>7</td>
-          <td>Contest</td>
-          <td colspan="11" class="text-center">Nil</td>
-          <td class="status-not-planned text-center">Not Planned</td>
-          <td class="assigned-not text-center">Not Assigned</td>
-        </tr>
-        <tr class="table-light-yellow">
-          <td>8</td>
-          <td>Offers</td>
-          <td colspan="11" class="text-center">Nil</td>
-          <td class="status-not-planned text-center">Not Planned</td>
-          <td class="assigned-not text-center">Not Assigned</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }">
+  <div class="container mt-5">
+    <div class="container my-4">
+      <div class="form-group">
+        <label for="moduleSelect">Select Module</label>
+        <select class="custom-input" id="moduleSelect" [(ngModel)]="selectedModule">
+          <option value="" disabled>Select a Module</option>
+          <option *ngFor="let module of modules" [value]="module">{{module}}</option>
+        </select>
+      </div>
+      <div *ngIf="selectedModule === 'Content Tracker'" class="mt-5">
+        <button (click)="downloadCSV()" class="download-btn">Download as csv</button>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="table-header">
+              <tr>
+                <th colspan="14" class="main-header">Content Tracker (Content Creations)</th>
+              </tr>
+              <tr>
+                <th rowspan="2">S.No</th>
+                <th rowspan="2">Tasks</th>
+                <th colspan="5" class="goal">Goal</th>
+                <th colspan="5" class="actual">Actual</th>
+                <th colspan="2" class="sts-all">Overall Status</th>
+              </tr>
+              <tr>
+                <!-- Goal Columns -->
+                <th class="goal">Quantity</th>
+                <th class="goal">Quality</th>
+                <th class="goal">Start Date</th>
+                <th class="goal">End Date</th>
+                <th class="goal">No of Days</th>
+                <!-- Actual Columns -->
+                <th class="actual">Quantity</th>
+                <th class="actual">Quality</th>
+                <th class="actual">Start Date</th>
+                <th class="actual">End Date</th>
+                <th class="actual">No of Days</th>
+                <th class="sts-all">Process Status</th>
+                <th class="sts-all">Assigned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row">
+                <td class="table-cell">1</td>
+                <td class="table-cell">Blogs</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">6 Sept</td>
+                <td class="table-cell">5</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">6 Sept</td>
+                <td class="table-cell">5</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell not-planed">Yoganandhan</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">2</td>
+                <td class="table-cell">Vlogs</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">3 Sept</td>
+                <td class="table-cell">2</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">3 Sept</td>
+                <td class="table-cell">2</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell team">Team</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">3</td>
+                <td class="table-cell">Posters</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">5 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">5 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell team">Team</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">4</td>
+                <td class="table-cell">Reels</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">4 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">4 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell team">Team</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">5</td>
+                <td class="table-cell">Testimonials</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">6</td>
+                <td class="table-cell">Case Study</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">7</td>
+                <td class="table-cell">Contest</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">8</td>
+                <td class="table-cell">Offers</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div *ngIf="selectedModule === 'Collateral Tracker'" class="mt-5">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="table-header">
+              <tr>
+                <th colspan="14" class="main-header">Collateral Tracker (Collateral Designs & Video Making)</th>
+              </tr>
+              <tr>
+                <th rowspan="2">S.No</th>
+                <th rowspan="2">Tasks</th>
+                <th colspan="5" class="goal">Goal</th>
+                <th colspan="5" class="actual">Actual</th>
+                <th colspan="2" class="sts-all">Overall Status</th>
+              </tr>
+              <tr>
+                <!-- Goal Columns -->
+                <th class="goal">Quantity</th>
+                <th class="goal">Quality</th>
+                <th class="goal">Start Date</th>
+                <th class="goal">End Date</th>
+                <th class="goal">No of Days</th>
+                <!-- Actual Columns -->
+                <th class="actual">Quantity</th>
+                <th class="actual">Quality</th>
+                <th class="actual">Start Date</th>
+                <th class="actual">End Date</th>
+                <th class="actual">No of Days</th>
+                <th class="sts-all">Process Status</th>
+                <th class="sts-all">Assigned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row">
+                <td class="table-cell">1</td>
+                <td class="table-cell">Blogs</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">6 Sept</td>
+                <td class="table-cell">5</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">6 Sept</td>
+                <td class="table-cell">5</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell not-planed">Yoganandhan</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">2</td>
+                <td class="table-cell">Vlogs</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">3 Sept</td>
+                <td class="table-cell">2</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">3 Sept</td>
+                <td class="table-cell">2</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell team">Team</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">3</td>
+                <td class="table-cell">Posters</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">5 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">5 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell team">Team</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">4</td>
+                <td class="table-cell">Reels</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">4 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">4 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell team">Team</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">5</td>
+                <td class="table-cell">Testimonials</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">6</td>
+                <td class="table-cell">Case Study</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">7</td>
+                <td class="table-cell">Contest</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">8</td>
+                <td class="table-cell">Offers</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div *ngIf="selectedModule === 'Marketing Calender'" class="mt-5">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="table-header">
+              <tr>
+                <th colspan="14" class="main-header">Marketing Calender (Online & Offline Activites)</th>
+              </tr>
+              <tr>
+                <th rowspan="2">S.No</th>
+                <th rowspan="2">Tasks</th>
+                <th colspan="5" class="goal">Goal</th>
+                <th colspan="5" class="actual">Actual</th>
+                <th colspan="2" class="sts-all">Overall Status</th>
+              </tr>
+              <tr>
+                <!-- Goal Columns -->
+                <th class="goal">Quantity</th>
+                <th class="goal">Quality</th>
+                <th class="goal">Start Date</th>
+                <th class="goal">End Date</th>
+                <th class="goal">No of Days</th>
+                <!-- Actual Columns -->
+                <th class="actual">Quantity</th>
+                <th class="actual">Quality</th>
+                <th class="actual">Start Date</th>
+                <th class="actual">End Date</th>
+                <th class="actual">No of Days</th>
+                <th class="sts-all">Process Status</th>
+                <th class="sts-all">Assigned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-row">
+                <td class="table-cell">1</td>
+                <td class="table-cell">Blogs</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">6 Sept</td>
+                <td class="table-cell">5</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">11</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">6 Sept</td>
+                <td class="table-cell">5</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell not-planed">Yoganandhan</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">2</td>
+                <td class="table-cell">Vlogs</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">3 Sept</td>
+                <td class="table-cell">2</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">12</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">3 Sept</td>
+                <td class="table-cell">2</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell team">Team</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">3</td>
+                <td class="table-cell">Posters</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">5 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">120</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">5 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell team">Team</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">4</td>
+                <td class="table-cell">Reels</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">4 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">20</td>
+                <td class="table-cell">2 Sept</td>
+                <td class="table-cell">4 Sept</td>
+                <td class="table-cell">3</td>
+                <td class="table-cell sts-complete">Completed</td>
+                <td class="table-cell team">Team</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">5</td>
+                <td class="table-cell">Testimonials</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">6</td>
+                <td class="table-cell">Case Study</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">7</td>
+                <td class="table-cell">Contest</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+              <tr class="table-row">
+                <td class="table-cell">8</td>
+                <td class="table-cell">Offers</td>
+                <td colspan="10" class="table-cell">Nill</td>
+                <td class="table-cell not-planed">Not Planned</td>
+                <td class="table-cell not-assigned">Not Assigned</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
 </div>

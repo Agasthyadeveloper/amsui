@@ -1,4 +1,4 @@
-.table-custom-header {
+/* .table-custom-header {
     background-color: #800040;
     color: white;
     font-weight: bold;
@@ -22,4 +22,80 @@
   .assigned-not {
     background-color: #ffc107;
     color: white;
-  }
+  } */
+
+.table-header {
+  background-color: #007bff;
+  color: white;
+}
+
+.table-cell {
+  vertical-align: middle;
+}
+
+.table-row:hover {
+  background-color: #f1f1f1;
+}
+
+.sts-complete {
+  background-color: green;
+  color: white;
+}
+
+.not-planed{
+  background-color: #e7cef3;
+  color: #5b3283;
+}
+
+.team{
+  background-color: #5b3283;
+  color: #e7cef3;
+}
+
+.not-assigned{
+  background-color: #b00200;
+  color: #ffffff;
+}
+
+.goal{
+  background-color: #d6a6be;
+  text-align: center;
+}
+
+.actual {
+  background-color: #92c47d;
+  text-align: center;
+}
+
+.sts-all{
+  background-color: #ffff00;
+  text-align: center;
+}
+
+td{
+  text-align: center;
+}
+
+th{
+  text-align: center;
+}
+
+.main-header{
+  background-color: #741b48;
+  color: white;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+  border-color: #5e1080;
+  outline: none;
+  box-shadow: 0 0 5px rgba(93, 18, 133, 0.679);
+}

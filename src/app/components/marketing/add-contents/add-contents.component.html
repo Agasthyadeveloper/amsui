@@ -1,54 +1,7 @@
 <app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
 <app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
 <div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }">
-    <!-- <div class="container card-margin">
-        <div class="card shadow">
-            <div class="card-header text-center">
-                <h2>Add Task</h2>
-            </div>
-            <div class="card-body">
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label>Task Name:</label>
-                        <input type="text" class="custom-input" placeholder="Enter quantity" />
-                    </div>
-                    <div class="col-md-6">
-                        <label>Task Quantity:</label>
-                        <input type="number" class="custom-input" placeholder="Enter quantity" />
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label>Task Quality:</label>
-                        <input type="text" class="custom-input" placeholder="Enter quality" />
-                    </div>
-                    <div class="col-md-6">
-                        <label>Start Date:</label>
-                        <input type="date" class="custom-input" />
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label>End Date:</label>
-                        <input type="date" class="custom-input" />
-                    </div>
-                    <div class="col-md-6">
-                        <label>Number of Dates:</label>
-                        <input type="number" class="custom-input" placeholder="Enter number of dates" />
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label>Assigned By:</label>
-                        <input type="text" class="custom-input" placeholder="Enter name" />
-                    </div>
-                    <div class="col-md-6"></div>
-                </div>
-                <button class="submit-btn"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Create</button>
-            </div>
-        </div>
-    </div> -->
-    <div style="margin-top: 5%;" class="container">
+   <div style="margin-top: 5%; margin-bottom: 5%;" class="container">
         <!-- Dropdown for selecting module -->
         <div class="form-group">
             <label for="moduleSelect">Select Module</label>
@@ -61,8 +14,8 @@
         <!-- Conditionally display the form based on the selected module -->
         <div *ngIf="selectedModule === 'Content Tracker'" class="container card-margin">
             <div class="card shadow">
-                <div class="card-header text-center">
-                    <h2>Content Tracker</h2>
+                <div class="heading-card">
+                    <label>Content Tracker</label>
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">
@@ -82,17 +35,21 @@
                         </div>
                         <div class="col-md-6">
                             <label>Start Date:</label>
-                            <input type="date" class="custom-input" />
+                            <input type="date" class="custom-input" [(ngModel)]="startDate" name="startDate"
+                                (change)="updateEndDateLimit()" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>End Date:</label>
-                            <input type="date" class="custom-input" />
+                            <label>End Date <span style="font-size: 10px;color: red;">(End date cannot be before start
+                                    date)</span> :</label>
+                            <input type="date" class="custom-input" [(ngModel)]="endDate" name="endDate"
+                                [min]="minEndDate" (change)="calculateNumberOfDays()" />
                         </div>
                         <div class="col-md-6">
                             <label>Number of Dates:</label>
-                            <input type="number" class="custom-input" placeholder="Enter number of dates" />
+                            <input type="text" class="custom-input" [(ngModel)]="numberOfDaysText"
+                                name="numberOfDaysText" readonly />
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -109,8 +66,8 @@
 
         <div *ngIf="selectedModule === 'Collateral Tracker'" class="container card-margin">
             <div class="card shadow">
-                <div class="card-header text-center">
-                    <h2>Collateral Tracker</h2>
+                <div class="heading-card">
+                    <label>Collateral Tracker</label>
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">
@@ -136,17 +93,21 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Start Date:</label>
-                            <input type="date" class="custom-input" />
+                            <input type="date" class="custom-input" [(ngModel)]="startDate" name="startDate"
+                                (change)="updateEndDateLimit()" />
                         </div>
                         <div class="col-md-6">
-                            <label>End Date:</label>
-                            <input type="date" class="custom-input" />
+                            <label>End Date <span style="font-size: 10px;color: red;">(End date cannot be before start
+                                    date)</span> :</label>
+                            <input type="date" class="custom-input" [(ngModel)]="endDate" name="endDate"
+                                [min]="minEndDate" (change)="calculateNumberOfDays()" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Number of Dates:</label>
-                            <input type="number" class="custom-input" placeholder="Enter number of dates" />
+                            <input type="text" class="custom-input" [(ngModel)]="numberOfDaysText"
+                                name="numberOfDaysText" readonly />
                         </div>
                         <div class="col-md-6">
                             <label>Assigned By:</label>
@@ -160,8 +121,8 @@
 
         <div *ngIf="selectedModule === 'Marketing Calender'" class="container card-margin">
             <div class="card shadow">
-                <div class="card-header text-center">
-                    <h2>Marketing Calender (Online & Offline Activites)</h2>
+                <div class="heading-card">
+                    <label>Marketing Calender (Online & Offline Activites)</label>
                 </div>
                 <div class="card-body">
                     <div class="row mb-3">
@@ -187,17 +148,21 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Start Date:</label>
-                            <input type="date" class="custom-input" />
+                            <input type="date" class="custom-input" [(ngModel)]="startDate" name="startDate"
+                                (change)="updateEndDateLimit()" />
                         </div>
                         <div class="col-md-6">
-                            <label>End Date:</label>
-                            <input type="date" class="custom-input" />
+                            <label>End Date <span style="font-size: 10px;color: red;">(End date cannot be before start
+                                    date)</span> :</label>
+                            <input type="date" class="custom-input" [(ngModel)]="endDate" name="endDate"
+                                [min]="minEndDate" (change)="calculateNumberOfDays()" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Number of Dates:</label>
-                            <input type="number" class="custom-input" placeholder="Enter number of dates" />
+                            <input type="text" class="custom-input" [(ngModel)]="numberOfDaysText"
+                                name="numberOfDaysText" readonly />
                         </div>
                         <div class="col-md-6">
                             <label>Assigned By:</label>

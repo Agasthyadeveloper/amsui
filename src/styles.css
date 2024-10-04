@@ -25,8 +25,8 @@ body {
     border: #000000 1px solid;
 }
 
-.submit-btn {
-    width: 10%;
+/* .submit-btn {
+    width: 100px;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -44,6 +44,48 @@ body {
     background-color: white;
     color: #181818;
     border: #5e1080 1px solid;
+} */
+
+.submit-btn {
+    width: 110px;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #5e1080;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.submit-btn:hover {
+    background-color: white;
+    color: #181818;
+    border-color: #5e1080;
+}
+
+.download-btn {
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: gray;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 1%;
+}
+
+.download-btn:hover {
+    background-color: white;
+    color: #181818;
+    border-color: black;
 }
 
 /* .content {
