@@ -19,6 +19,8 @@ import { ContentStatusComponent } from './components/marketing/content-status/co
 import { ViewGoalComponent } from './components/marketing/add-contents/view-goal/view-goal.component';
 import { AddContentsComponent } from './components/marketing/add-contents/add-contents.component';
 import { ActualTaskComponent } from './components/marketing/update-content/actual-task/actual-task.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { ProjectMarketingComponent } from './components/marketing/project-marketing/project-marketing.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { ActualTaskComponent } from './components/marketing/update-content/actua
     ViewGoalComponent,
     AddContentsComponent,
     ActualTaskComponent,
+    ProjectsComponent,
+    ProjectMarketingComponent,
   ],
   imports: [
     BrowserModule,
