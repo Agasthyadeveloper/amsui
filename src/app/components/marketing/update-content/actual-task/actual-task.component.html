@@ -1,0 +1,376 @@
+<app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
+<app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
+<div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }">
+    <div class="container mt-5">
+      <div class="container my-4">
+        <div class="form-group">
+          <label for="moduleSelect">Select Module</label>
+          <select class="custom-input" id="moduleSelect" [(ngModel)]="selectedModule">
+            <option value="" disabled>Select a Module</option>
+            <option *ngFor="let module of modules" [value]="module">{{module}}</option>
+          </select>
+        </div>
+        
+        <div *ngIf="selectedModule === 'Content Tracker'" class="mt-5">
+          <div id="content-to-pdf" class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead class="table-header">
+                <tr>
+                  <th colspan="13" class="main-header">Content Tracker (Content Creations)</th>
+                </tr>
+                <tr>
+                  <th rowspan="2">S.No</th>
+                  <th rowspan="2">Tasks</th>
+                  <th colspan="5" class="goal">Goal</th>
+                  <th colspan="5" class="actual">Actual</th>
+                  <th rowspan="2">Update Actual</th>
+                </tr>
+                <tr>
+                  <!-- Goal Columns -->
+                  <th class="goal">Quantity</th>
+                  <th class="goal">Quality</th>
+                  <th class="goal">Start Date</th>
+                  <th class="goal">End Date</th>
+                  <th class="goal">No of Days</th>
+                  <!-- Actual Columns -->
+                  <th class="actual">Quantity</th>
+                  <th class="actual">Quality</th>
+                  <th class="actual">Start Date</th>
+                  <th class="actual">End Date</th>
+                  <th class="actual">No of Days</th>
+                  <!-- <th class="sts-all">Process Status</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row">
+                  <td class="table-cell">1</td>
+                  <td class="table-cell">Blogs</td>
+                  <td class="table-cell">11</td>
+                  <td class="table-cell">11</td>
+                  <td class="table-cell">2 Sept</td>
+                  <td class="table-cell">6 Sept</td>
+                  <td class="table-cell">5</td>
+                  <td class="table-cell">11</td>
+                  <td class="table-cell">11</td>
+                  <td class="table-cell">2 Sept</td>
+                  <td class="table-cell">6 Sept</td>
+                  <td class="table-cell">5</td>
+                  <th [routerLink]="['/Update-actual','Content Tracker']"><i class='far fa-edit'></i></th>
+                </tr>
+                <tr class="table-row">
+                  <td class="table-cell">2</td>
+                  <td class="table-cell">Vlogs</td>
+                  <td class="table-cell">12</td>
+                  <td class="table-cell">12</td>
+                  <td class="table-cell">2 Sept</td>
+                  <td class="table-cell">3 Sept</td>
+                  <td class="table-cell">2</td>
+                  <td class="table-cell">12</td>
+                  <td class="table-cell">12</td>
+                  <td class="table-cell">2 Sept</td>
+                  <td class="table-cell">3 Sept</td>
+                  <td class="table-cell">2</td>
+                  <th [routerLink]="['/Update-actual','Content Tracker']"><i class='far fa-edit'></i></th>
+                </tr>
+                <tr class="table-row">
+                  <td class="table-cell">3</td>
+                  <td class="table-cell">Posters</td>
+                  <td class="table-cell">120</td>
+                  <td class="table-cell">120</td>
+                  <td class="table-cell">2 Sept</td>
+                  <td class="table-cell">5 Sept</td>
+                  <td class="table-cell">3</td>
+                  <td class="table-cell">120</td>
+                  <td class="table-cell">120</td>
+                  <td class="table-cell">2 Sept</td>
+                  <td class="table-cell">5 Sept</td>
+                  <td class="table-cell">3</td>
+                  <th [routerLink]="['/Update-actual','Content Tracker']"><i class='far fa-edit'></i></th>
+                </tr>
+                <tr class="table-row">
+                  <td class="table-cell">4</td>
+                  <td class="table-cell">Reels</td>
+                  <td class="table-cell">20</td>
+                  <td class="table-cell">20</td>
+                  <td class="table-cell">2 Sept</td>
+                  <td class="table-cell">4 Sept</td>
+                  <td class="table-cell">3</td>
+                  <td class="table-cell">20</td>
+                  <td class="table-cell">20</td>
+                  <td class="table-cell">2 Sept</td>
+                  <td class="table-cell">4 Sept</td>
+                  <td class="table-cell">3</td>
+                  <th [routerLink]="['/Update-actual','Content Tracker']"><i class='far fa-edit'></i></th>                  
+                </tr>
+                <tr class="table-row">
+                  <td class="table-cell">5</td>
+                  <td class="table-cell">Testimonials</td>
+                  <td colspan="10" class="table-cell">Nill</td>
+                  <th [routerLink]="['/Update-actual','Content Tracker']"><i class='far fa-edit'></i></th>                 
+                </tr>
+                <tr class="table-row">
+                  <td class="table-cell">6</td>
+                  <td class="table-cell">Case Study</td>
+                  <td colspan="10" class="table-cell">Nill</td>
+                  <th [routerLink]="['/Update-actual','Content Tracker']"><i class='far fa-edit'></i></th>                 
+                </tr>
+                <tr class="table-row">
+                  <td class="table-cell">7</td>
+                  <td class="table-cell">Contest</td>
+                  <td colspan="10" class="table-cell">Nill</td>
+                  <th [routerLink]="['/Update-actual','Content Tracker']"><i class='far fa-edit'></i></th>                 
+                </tr>
+                <tr class="table-row">
+                  <td class="table-cell">8</td>
+                  <td class="table-cell">Offers</td>
+                  <td colspan="10" class="table-cell">Nill</td>
+                  <th [routerLink]="['/Update-actual','Content Tracker']"><i class='far fa-edit'></i></th>                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <div *ngIf="selectedModule === 'Collateral Tracker'" class="mt-5">
+          <div id="content-to-pdf" class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead class="table-header">
+                <tr>
+                  <th colspan="14" class="main-header">Collateral Tracker (Collateral Designs & Video Making)</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">S.No</th>
+                    <th rowspan="2">Tasks</th>
+                    <th colspan="5" class="goal">Goal</th>
+                    <th colspan="5" class="actual">Actual</th>
+                    <th rowspan="2">Update Actual</th>
+                  </tr>
+                  <tr>
+                    <!-- Goal Columns -->
+                    <th class="goal">Quantity</th>
+                    <th class="goal">Quality</th>
+                    <th class="goal">Start Date</th>
+                    <th class="goal">End Date</th>
+                    <th class="goal">No of Days</th>
+                    <!-- Actual Columns -->
+                    <th class="actual">Quantity</th>
+                    <th class="actual">Quality</th>
+                    <th class="actual">Start Date</th>
+                    <th class="actual">End Date</th>
+                    <th class="actual">No of Days</th>
+                    <!-- <th class="sts-all">Process Status</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-row">
+                    <td class="table-cell">1</td>
+                    <td class="table-cell">Blogs</td>
+                    <td class="table-cell">11</td>
+                    <td class="table-cell">11</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">6 Sept</td>
+                    <td class="table-cell">5</td>
+                    <td class="table-cell">11</td>
+                    <td class="table-cell">11</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">6 Sept</td>
+                    <td class="table-cell">5</td>
+                    <th [routerLink]="['/Update-actual','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">2</td>
+                    <td class="table-cell">Vlogs</td>
+                    <td class="table-cell">12</td>
+                    <td class="table-cell">12</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">3 Sept</td>
+                    <td class="table-cell">2</td>
+                    <td class="table-cell">12</td>
+                    <td class="table-cell">12</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">3 Sept</td>
+                    <td class="table-cell">2</td>
+                    <th [routerLink]="['/Update-actual','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">3</td>
+                    <td class="table-cell">Posters</td>
+                    <td class="table-cell">120</td>
+                    <td class="table-cell">120</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">5 Sept</td>
+                    <td class="table-cell">3</td>
+                    <td class="table-cell">120</td>
+                    <td class="table-cell">120</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">5 Sept</td>
+                    <td class="table-cell">3</td>
+                    <th [routerLink]="['/Update-actual','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">4</td>
+                    <td class="table-cell">Reels</td>
+                    <td class="table-cell">20</td>
+                    <td class="table-cell">20</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">4 Sept</td>
+                    <td class="table-cell">3</td>
+                    <td class="table-cell">20</td>
+                    <td class="table-cell">20</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">4 Sept</td>
+                    <td class="table-cell">3</td>
+                    <th [routerLink]="['/Update-actual','Collateral Tracker']"><i class='far fa-edit'></i></th>                  
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">5</td>
+                    <td class="table-cell">Testimonials</td>
+                    <td colspan="10" class="table-cell">Nill</td>
+                    <th [routerLink]="['/Update-actual','Collateral Tracker']"><i class='far fa-edit'></i></th>                 
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">6</td>
+                    <td class="table-cell">Case Study</td>
+                    <td colspan="10" class="table-cell">Nill</td>
+                    <th [routerLink]="['/Update-actual','Collateral Tracker']"><i class='far fa-edit'></i></th>                 
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">7</td>
+                    <td class="table-cell">Contest</td>
+                    <td colspan="10" class="table-cell">Nill</td>
+                    <th [routerLink]="['/Update-actual','Collateral Tracker']"><i class='far fa-edit'></i></th>                 
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">8</td>
+                    <td class="table-cell">Offers</td>
+                    <td colspan="10" class="table-cell">Nill</td>
+                    <th [routerLink]="['/Update-actual','Collateral Tracker']"><i class='far fa-edit'></i></th>                  
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <div *ngIf="selectedModule === 'Marketing Calender'" class="mt-5">
+          <div id="content-to-pdf" class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead class="table-header">
+                <tr>
+                  <th colspan="14" class="main-header">Marketing Calender (Online & Offline Activites)</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">S.No</th>
+                    <th rowspan="2">Tasks</th>
+                    <th colspan="5" class="goal">Goal</th>
+                    <th colspan="5" class="actual">Actual</th>
+                    <th rowspan="2">Update Actual</th>
+                  </tr>
+                  <tr>
+                    <!-- Goal Columns -->
+                    <th class="goal">Quantity</th>
+                    <th class="goal">Quality</th>
+                    <th class="goal">Start Date</th>
+                    <th class="goal">End Date</th>
+                    <th class="goal">No of Days</th>
+                    <!-- Actual Columns -->
+                    <th class="actual">Quantity</th>
+                    <th class="actual">Quality</th>
+                    <th class="actual">Start Date</th>
+                    <th class="actual">End Date</th>
+                    <th class="actual">No of Days</th>
+                    <!-- <th class="sts-all">Process Status</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-row">
+                    <td class="table-cell">1</td>
+                    <td class="table-cell">Blogs</td>
+                    <td class="table-cell">11</td>
+                    <td class="table-cell">11</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">6 Sept</td>
+                    <td class="table-cell">5</td>
+                    <td class="table-cell">11</td>
+                    <td class="table-cell">11</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">6 Sept</td>
+                    <td class="table-cell">5</td>
+                    <th [routerLink]="['/Update-actual','Marketing Calender']"><i class='far fa-edit'></i></th>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">2</td>
+                    <td class="table-cell">Vlogs</td>
+                    <td class="table-cell">12</td>
+                    <td class="table-cell">12</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">3 Sept</td>
+                    <td class="table-cell">2</td>
+                    <td class="table-cell">12</td>
+                    <td class="table-cell">12</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">3 Sept</td>
+                    <td class="table-cell">2</td>
+                    <th [routerLink]="['/Update-actual','Marketing Calender']"><i class='far fa-edit'></i></th>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">3</td>
+                    <td class="table-cell">Posters</td>
+                    <td class="table-cell">120</td>
+                    <td class="table-cell">120</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">5 Sept</td>
+                    <td class="table-cell">3</td>
+                    <td class="table-cell">120</td>
+                    <td class="table-cell">120</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">5 Sept</td>
+                    <td class="table-cell">3</td>
+                    <th [routerLink]="['/Update-actual','Marketing Calender']"><i class='far fa-edit'></i></th>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">4</td>
+                    <td class="table-cell">Reels</td>
+                    <td class="table-cell">20</td>
+                    <td class="table-cell">20</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">4 Sept</td>
+                    <td class="table-cell">3</td>
+                    <td class="table-cell">20</td>
+                    <td class="table-cell">20</td>
+                    <td class="table-cell">2 Sept</td>
+                    <td class="table-cell">4 Sept</td>
+                    <td class="table-cell">3</td>
+                    <th [routerLink]="['/Update-actual','Marketing Calender']"><i class='far fa-edit'></i></th>                  
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">5</td>
+                    <td class="table-cell">Testimonials</td>
+                    <td colspan="10" class="table-cell">Nill</td>
+                    <th [routerLink]="['/Update-actual','Marketing Calender']"><i class='far fa-edit'></i></th>                 
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">6</td>
+                    <td class="table-cell">Case Study</td>
+                    <td colspan="10" class="table-cell">Nill</td>
+                    <th [routerLink]="['/Update-actual','Marketing Calender']"><i class='far fa-edit'></i></th>                 
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">7</td>
+                    <td class="table-cell">Contest</td>
+                    <td colspan="10" class="table-cell">Nill</td>
+                    <th [routerLink]="['/Update-actual','Marketing Calender']"><i class='far fa-edit'></i></th>                 
+                  </tr>
+                  <tr class="table-row">
+                    <td class="table-cell">8</td>
+                    <td class="table-cell">Offers</td>
+                    <td colspan="10" class="table-cell">Nill</td>
+                    <th [routerLink]="['/Update-actual','Marketing Calender']"><i class='far fa-edit'></i></th>                  
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>

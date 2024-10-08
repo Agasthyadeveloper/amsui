@@ -1,0 +1,106 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Poppins', sans-serif;
+  margin: 30px 0;
+  background: linear-gradient(to bottom, #ffffff, #f0f0f5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Header styling */
+thead th {
+  background: #f5945c;
+  color: black;
+  font-size: 20px;
+  text-transform: uppercase;
+  padding: 16px;
+  border: 1px solid;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+thead tr:first-child th {
+  font-size: 24px;
+  background: #741b48;
+  color: white;
+  border-bottom: 2px solid white;
+}
+
+/* Body rows styling */
+tbody tr {
+  transition: all 0.3s ease;
+  font-size: 16px;
+  border: 1px solid;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Alternating row colors */
+tbody tr:nth-child(odd) {
+  background-color: #f0f0f5;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Hover effects */
+tbody tr:hover {
+  background-color: #a29bfe;
+  color: white;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transform: scale(1.01);
+}
+
+tbody td {
+  padding: 14px;
+  text-align: center;
+  color: #333;
+  border: none;
+  border: 1px solid;
+}
+
+i {
+  color: gray;
+  font-size: 18px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin-left: 45%;
+}
+
+i.far.fa-edit:hover {
+  color: #741b48;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.card-margin{
+  margin-top: 4%;
+}
+
+.select-mt{
+  margin-top: 5%;
+}
+/* Responsive table for mobile devices */
+@media (max-width: 768px) {
+  .card-margin{
+    margin-top: 15%;
+  }
+
+  .select-mt{
+    margin-top: 20%;
+  }
+}

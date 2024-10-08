@@ -1,5 +1,4 @@
 import { Component,Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent {
   @Input() isOpen = true;
-  
+
   expandedMenu: string | null = null;
 
   toggleMenu(menuName: string) {

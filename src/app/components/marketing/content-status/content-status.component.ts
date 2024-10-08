@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-content-status',
@@ -38,5 +41,44 @@ export class ContentStatusComponent {
     link.download = 'table_data.csv';
     link.click();
   }
+
+  downloadPDF() {
+    const data = document.getElementById('content-to-pdf'); // Get the content to convert to PDF
+    
+    if (data) {
+      html2canvas(data).then(canvas => {
+        const imgWidth = 210; // A4 size width in mm
+        const pageHeight = 295; // A4 size height in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+
+        const imgData = canvas.toDataURL('image/png'); // Convert the canvas to an image
+        const pdf = new jsPDF('p', 'mm', 'a4'); // Create a new jsPDF instance
+
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight); // Add the image to PDF
+        heightLeft -= pageHeight;
+
+        // If the content is larger than one page, add extra pages
+        while (heightLeft >= 0) {
+          position = heightLeft - imgHeight;
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+        }
+
+        pdf.save('content-tracker.pdf'); // Save the PDF with a filename
+      });
+    }
+  }
   
+  isModalOpen = false;
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
 }

@@ -1,18 +1,18 @@
 <app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
 <app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
 <div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }">
-   <div style="margin-top: 5%; margin-bottom: 5%;" class="container">
+    <div class="container mob-res">
         <!-- Dropdown for selecting module -->
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="moduleSelect">Select Module</label>
             <select class="custom-input" id="moduleSelect" [(ngModel)]="selectedModule">
                 <option value="" disabled>Select a Module</option>
                 <option *ngFor="let module of modules" [value]="module">{{module}}</option>
             </select>
-        </div>
+        </div> -->
 
         <!-- Conditionally display the form based on the selected module -->
-        <div *ngIf="selectedModule === 'Content Tracker'" class="container card-margin">
+        <div *ngIf="currenttask === 'Content Tracker'|| updatetask ==='Content Tracker'" class="container mb-3 card-margin">
             <div class="card shadow">
                 <div class="heading-card">
                     <label>Content Tracker</label>
@@ -59,12 +59,12 @@
                         </div>
                         <div class="col-md-6"></div>
                     </div>
-                    <button class="submit-btn"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Create</button>
+                    <button class="submit-btn">Create</button>
                 </div>
             </div>
         </div>
 
-        <div *ngIf="selectedModule === 'Collateral Tracker'" class="container card-margin">
+        <div *ngIf="currenttask === 'Collateral Tracker' || updatetask === 'Collateral Tracker'" class="container card-margin">
             <div class="card shadow">
                 <div class="heading-card">
                     <label>Collateral Tracker</label>
@@ -114,12 +114,12 @@
                             <input type="text" class="custom-input" placeholder="Enter name" />
                         </div>
                     </div>
-                    <button class="submit-btn"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Create</button>
+                    <button class="submit-btn">Create</button>
                 </div>
             </div>
         </div>
 
-        <div *ngIf="selectedModule === 'Marketing Calender'" class="container card-margin">
+        <div *ngIf="currenttask === 'Marketing Calender' || updatetask === 'Marketing Calender'" class="container card-margin">
             <div class="card shadow">
                 <div class="heading-card">
                     <label>Marketing Calender (Online & Offline Activites)</label>
@@ -183,7 +183,7 @@
                             </select>
                         </div>
                     </div>
-                    <button class="submit-btn"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Create</button>
+                    <button class="submit-btn">Create</button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +8,17 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  constructor(private breakpointObserver: BreakpointObserver,private location: Location) {}
   @Output() toggleSidebarEvent = new EventEmitter<void>();
   isSidebarOpen = false;
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
     this.toggleSidebarEvent.emit();
-    // alert(this.isSidebarOpen)
+  }
+
+
+  goBack(): void {
+    this.location.back();
   }
 }

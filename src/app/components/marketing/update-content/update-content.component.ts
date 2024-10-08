@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-update-content',
@@ -12,8 +13,17 @@ export class UpdateContentComponent {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 
-  selectedModule: string = '';
-  modules: string[] = ['Content Tracker', 'Collateral Tracker','Marketing Calender'];
+  updateactualtask: string | null = null;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.updateactualtask = params['updateactual'];
+    });
+
+    console.log(this.updateactualtask);
+  }
 
   startDate: string = '';
   endDate: string = '';

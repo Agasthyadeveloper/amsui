@@ -10,7 +10,7 @@
       </li>
       <li>
         <a (click)="toggleMenu('civil')">
-          <span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Civil
+          <span class="icon-bg"><i class='far fa-building' aria-hidden="true"></i></span>Civil
           <i class="fa"
             [ngClass]="{'fa-chevron-down': isMenuExpanded('civil'), 'fa-chevron-right': !isMenuExpanded('civil')}"
             aria-hidden="true"></i>
@@ -30,10 +30,10 @@
         </a>
         <ul *ngIf="isMenuExpanded('marketing')">
           <li [routerLinkActive]="['active']">
-            <a routerLink="/add-contents">Add Task</a>
+            <a routerLink="/view-goals">Add Task</a>
           </li>
           <li [routerLinkActive]="['active']">
-            <a routerLink="/Update-contents">Update Task</a>
+            <a routerLink="/Actual-task">Update Task</a>
           </li>
           <li [routerLinkActive]="['active']">
             <a routerLink="/content-status">Task Status</a>
@@ -43,7 +43,7 @@
 
       <li>
         <a (click)="toggleMenu('sales')">
-          <span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Sales
+          <span class="icon-bg"><i class="fas fa-chart-line" aria-hidden="true"></i></span>Sales
           <i class="fa"
             [ngClass]="{'fa-chevron-down': isMenuExpanded('sales'), 'fa-chevron-right': !isMenuExpanded('sales')}"
             aria-hidden="true"></i>
@@ -54,9 +54,10 @@
         </ul>
       </li>
 
-      <li><a><span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Purchase</a></li>
-      <li><a><span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Accounts</a></li>
-      <li><a><span class="icon-bg"><i class="fa fa-home" aria-hidden="true"></i></span>Legal</a></li>
+      <li><a><span class="icon-bg"><i class="fas fa-shopping-cart" aria-hidden="true"></i></span>Purchase</a></li>
+      <li><a><span class="icon-bg"><i class='fas fa-file-invoice-dollar' aria-hidden="true"></i></span>Accounts</a></li>
+      <li><a><span class="icon-bg"><i class="fa fa-balance-scale" aria-hidden="true"></i></span>Liaison</a></li>
+      <li><a><span class="icon-bg"><i class='fas fa-id-card-alt' aria-hidden="true"></i></span>HR</a></li>
     </ul>
   </nav>
 </div>

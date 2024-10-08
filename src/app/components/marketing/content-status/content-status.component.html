@@ -10,9 +10,30 @@
           <option *ngFor="let module of modules" [value]="module">{{module}}</option>
         </select>
       </div>
+      <!-- Card display -->
+      <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalOpen}" [style.display]="isModalOpen ? 'block' : 'none'">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p>Slect Format</p>
+              <!-- <button type="button" class="close" (click)="closeModal()" aria-label="Close"> 
+                <span aria-hidden="true">&times;</span>
+              </button>-->
+            </div>
+            <div class="modal-body">
+              <button class="download-btn" (click)="downloadPDF()">PDF</button> &nbsp;
+              <button class="download-btn" (click)="downloadCSV()">CSV</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div *ngIf="selectedModule === 'Content Tracker'" class="mt-5">
-        <button (click)="downloadCSV()" class="download-btn">Download as csv</button>
-        <div class="table-responsive">
+        <button (click)="openModal()" class="download-btn">Download</button>
+        <div id="content-to-pdf" class="table-responsive">
           <table class="table table-bordered table-striped">
             <thead class="table-header">
               <tr>
@@ -141,7 +162,8 @@
       </div>
 
       <div *ngIf="selectedModule === 'Collateral Tracker'" class="mt-5">
-        <div class="table-responsive">
+        <button (click)="openModal()" class="download-btn">Download</button>
+        <div id="content-to-pdf" class="table-responsive">
           <table class="table table-bordered table-striped">
             <thead class="table-header">
               <tr>
@@ -270,7 +292,8 @@
       </div>
 
       <div *ngIf="selectedModule === 'Marketing Calender'" class="mt-5">
-        <div class="table-responsive">
+        <button (click)="openModal()" class="download-btn">Download</button>
+        <div id="content-to-pdf" class="table-responsive">
           <table class="table table-bordered table-striped">
             <thead class="table-header">
               <tr>

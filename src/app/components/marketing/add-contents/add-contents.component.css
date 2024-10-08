@@ -36,3 +36,13 @@ label{
     text-align: center;
     font-size: 20px;
 }
+
+.mob-res{
+    margin-top: 5%;
+}
+
+@media screen and (max-width: 768px) {
+    .mob-res{
+        margin-top: 20%;
+    }
+}

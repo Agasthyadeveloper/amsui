@@ -1,42 +1,3 @@
-/* .table-custom-header {
-    background-color: #800040;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-  }
-  .table-light-yellow {
-    background-color: #FFF2CC;
-  }
-  .status-completed {
-    background-color: #28a745;
-    color: white;
-  }
-  .status-not-planned {
-    background-color: #dc3545;
-    color: white;
-  }
-  .assigned-team {
-    background-color: #6c757d;
-    color: white;
-  }
-  .assigned-not {
-    background-color: #ffc107;
-    color: white;
-  } */
-
-.table-header {
-  background-color: #007bff;
-  color: white;
-}
-
-.table-cell {
-  vertical-align: middle;
-}
-
-.table-row:hover {
-  background-color: #f1f1f1;
-}
-
 .sts-complete {
   background-color: green;
   color: white;
@@ -98,4 +59,29 @@ th{
   border-color: #5e1080;
   outline: none;
   box-shadow: 0 0 5px rgba(93, 18, 133, 0.679);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-dialog {
+  max-width: 500px;
+  margin: auto;
 }

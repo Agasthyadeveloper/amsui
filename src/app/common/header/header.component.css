@@ -19,6 +19,11 @@
   margin-bottom: 10%;
 }
 
+.back-icon{
+  display: flex;
+  left: 0;
+}
+
 /* Container for right-aligned elements */
 .nav-right {
   display: flex;

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-contents',
@@ -19,6 +20,20 @@ export class AddContentsComponent {
 
   selectedModule: string = '';
   modules: string[] = ['Content Tracker', 'Collateral Tracker', 'Marketing Calender'];
+
+  currenttask: string | null = null;
+  updatetask: string | null = null;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.currenttask = params['taskName'];
+      this.updatetask = params['updatetask'];
+      console.log("current task:",this.currenttask)
+      console.log("update task:",this.updatetask)
+    });
+  }
 
   startDate: string = '';
   endDate: string = '';

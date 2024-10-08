@@ -14,9 +14,11 @@ import { HeaderComponent } from './common/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProjectComponent } from './components/civil/project/project.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AddContentsComponent } from './components/marketing/add-contents/add-contents.component';
 import { UpdateContentComponent } from './components/marketing/update-content/update-content.component';
 import { ContentStatusComponent } from './components/marketing/content-status/content-status.component';
+import { ViewGoalComponent } from './components/marketing/add-contents/view-goal/view-goal.component';
+import { AddContentsComponent } from './components/marketing/add-contents/add-contents.component';
+import { ActualTaskComponent } from './components/marketing/update-content/actual-task/actual-task.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,11 @@ import { ContentStatusComponent } from './components/marketing/content-status/co
     HeaderComponent,
     DashboardComponent,
     ProjectComponent,
-    AddContentsComponent,
     UpdateContentComponent,
     ContentStatusComponent,
+    ViewGoalComponent,
+    AddContentsComponent,
+    ActualTaskComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,295 @@
+<app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
+<app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
+<div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }">
+    <div class="container mob-res">
+        <div class="select-mt">
+            
+                <label for="moduleSelect">Select Module</label>
+                <select class="custom-input" id="moduleSelect" [(ngModel)]="selectedModule">
+                    <option value="" disabled>Select a Module</option>
+                    <option *ngFor="let module of modules" [value]="module">{{module}}</option>
+                </select>
+            
+        </div>
+        <div *ngIf="selectedModule === 'Content Tracker'" class="card-margin">
+            <button [routerLink]="['/add-task', 'Content Tracker']" class="submit-btn">Add Task</button>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="14">Content Tracker (Content Creations)</th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">S.No</th>
+                            <th rowspan="2">Tasks</th>
+                            <th colspan="5">Goal</th>
+                            <th rowspan="2">Update</th>
+                        </tr>
+                        <tr>
+                            <!-- Goal Columns -->
+                            <th>Quantity</th>
+                            <th>Quality</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>No of Days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Blogs</td>
+                            <td>11</td>
+                            <td>11</td>
+                            <td>2 Sept</td>
+                            <td>6 Sept</td>
+                            <td>5</td>
+                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr class="table-row">
+                            <td>2</td>
+                            <td>Vlogs</td>
+                            <td>12</td>
+                            <td>12</td>
+                            <td>2 Sept</td>
+                            <td>3 Sept</td>
+                            <td>2</td>
+                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Posters</td>
+                            <td>120</td>
+                            <td>120</td>
+                            <td>2 Sept</td>
+                            <td>5 Sept</td>
+                            <td>3</td>
+                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Reels</td>
+                            <td>20</td>
+                            <td>20</td>
+                            <td>2 Sept</td>
+                            <td>4 Sept</td>
+                            <td>3</td>
+                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Testimonials</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Case Study</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr class="table-row">
+                            <td>7</td>
+                            <td>Contest</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr class="table-row">
+                            <td>8</td>
+                            <td>Offers</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div *ngIf="selectedModule === 'Collateral Tracker'" class="card-margin">
+            <button [routerLink]="['/add-task', 'Collateral Tracker']" class="submit-btn">Add Task</button>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-header">
+                        <tr>
+                            <th colspan="14" class="main-header">Collateral Tracker (Collateral Designs & Video Making)
+                            </th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">S.No</th>
+                            <th rowspan="2">Tasks</th>
+                            <th colspan="5">Goal</th>
+                            <th rowspan="2">Update</th>
+                        </tr>
+                        <tr>
+                            <!-- Goal Columns -->
+                            <th>Quantity</th>
+                            <th>Quality</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>No of Days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Blogs</td>
+                            <td>11</td>
+                            <td>11</td>
+                            <td>2 Sept</td>
+                            <td>6 Sept</td>
+                            <td>5</td>
+                            <th [routerLink]="['/update-goal','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr class="table-row">
+                            <td>2</td>
+                            <td>Vlogs</td>
+                            <td>12</td>
+                            <td>12</td>
+                            <td>2 Sept</td>
+                            <td>3 Sept</td>
+                            <td>2</td>
+                            <th [routerLink]="['/update-goal','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Posters</td>
+                            <td>120</td>
+                            <td>120</td>
+                            <td>2 Sept</td>
+                            <td>5 Sept</td>
+                            <td>3</td>
+                            <th [routerLink]="['/update-goal','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Reels</td>
+                            <td>20</td>
+                            <td>20</td>
+                            <td>2 Sept</td>
+                            <td>4 Sept</td>
+                            <td>3</td>
+                            <th [routerLink]="['/update-goal','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Testimonials</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Case Study</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr class="table-row">
+                            <td>7</td>
+                            <td>Contest</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr class="table-row">
+                            <td>8</td>
+                            <td>Offers</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Collateral Tracker']"><i class='far fa-edit'></i></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- <div *ngIf="selectedModule === 'Marketing Calender'" class="mt-5"> -->
+        <div *ngIf="selectedModule === 'Marketing Calender'" class="card-margin">
+            <button [routerLink]="['/add-task', 'Marketing Calender']" class="submit-btn">Add Task</button>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-header">
+                        <tr>
+                            <th colspan="14" class="main-header">Marketing Calender (Online & Offline Activites)</th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">S.No</th>
+                            <th rowspan="2">Tasks</th>
+                            <th colspan="5">Goal</th>
+                            <th rowspan="2">Update</th>
+                        </tr>
+                        <tr>
+                            <!-- Goal Columns -->
+                            <th>Quantity</th>
+                            <th>Quality</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>No of Days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Blogs</td>
+                            <td>11</td>
+                            <td>11</td>
+                            <td>2 Sept</td>
+                            <td>6 Sept</td>
+                            <td>5</td>
+                            <th [routerLink]="['/update-goal','Marketing Calender']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr class="table-row">
+                            <td>2</td>
+                            <td>Vlogs</td>
+                            <td>12</td>
+                            <td>12</td>
+                            <td>2 Sept</td>
+                            <td>3 Sept</td>
+                            <td>2</td>
+                            <th [routerLink]="['/update-goal','Marketing Calender']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Posters</td>
+                            <td>120</td>
+                            <td>120</td>
+                            <td>2 Sept</td>
+                            <td>5 Sept</td>
+                            <td>3</td>
+                            <th [routerLink]="['/update-goal','Marketing Calender']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Reels</td>
+                            <td>20</td>
+                            <td>20</td>
+                            <td>2 Sept</td>
+                            <td>4 Sept</td>
+                            <td>3</td>
+                            <th [routerLink]="['/update-goal','Marketing Calender']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Testimonials</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Marketing Calender']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Case Study</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Marketing Calender']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr class="table-row">
+                            <td>7</td>
+                            <td>Contest</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Marketing Calender']"><i class='far fa-edit'></i></th>
+                        </tr>
+                        <tr class="table-row">
+                            <td>8</td>
+                            <td>Offers</td>
+                            <td colspan="5">Nill</td>
+                            <th [routerLink]="['/update-goal','Marketing Calender']"><i class='far fa-edit'></i></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
