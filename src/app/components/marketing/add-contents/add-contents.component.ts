@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../../../../services/api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-contents',
@@ -24,15 +26,30 @@ export class AddContentsComponent {
   currenttask: string | null = null;
   updatetask: string | null = null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private http: HttpClient) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.currenttask = params['taskName'];
       this.updatetask = params['updatetask'];
-      console.log("current task:",this.currenttask)
-      console.log("update task:",this.updatetask)
+      console.log("current task:", this.currenttask)
+      console.log("update task:", this.updatetask)
     });
+    this.loadItems();
+  }
+
+
+  items: any[] = [];
+  loadItems(): void {
+    this.http.get<any>(this.apiService.getItemsUrl()).subscribe(
+      (data) => {
+        this.items = data;
+      },
+      (error) => {
+        console.error('Error fetching items', error);
+      }
+    );
+    console.log("im here",this.items)
   }
 
   startDate: string = '';

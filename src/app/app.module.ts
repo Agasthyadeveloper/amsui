@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +47,7 @@ import { ProjectMarketingComponent } from './components/marketing/project-market
     MatGridListModule,
     MatCardModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(),
