@@ -1,9 +1,9 @@
-.project-img{
+.project-img {
     height: 150px;
     width: auto;
 }
 
-.projects-card{
+.projects-card {
     background-color: #5e0f80;
     border-radius: 10px;
     display: flex;
@@ -16,4 +16,10 @@
 
 .projects-card:hover {
     transform: scale(1.2);
+}
+
+.projects-card-txt{
+    text-align: center;
+    border: 1px solid white;
+    padding: 5px;
 }
