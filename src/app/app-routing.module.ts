@@ -9,6 +9,7 @@ import { UpdateContentComponent } from './components/marketing/update-content/up
 import { ContentStatusComponent } from './components/marketing/content-status/content-status.component';
 import { ViewGoalComponent } from './components/marketing/add-contents/view-goal/view-goal.component';
 import { ActualTaskComponent } from './components/marketing/update-content/actual-task/actual-task.component';
+import { ProjectMarketingComponent } from './components/marketing/project-marketing/project-marketing.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'Actual-task', component: ActualTaskComponent },
   { path: 'content-status', component: ContentStatusComponent },
   { path: 'view-goals', component: ViewGoalComponent },
+  { path: 'project-marketing', component: ProjectMarketingComponent },
 ];
 
 @NgModule({

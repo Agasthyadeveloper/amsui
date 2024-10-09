@@ -1,37 +1,79 @@
-/* Apply background styling */
 .header {
-  position: fixed; /* Keep header fixed at the top */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between; /* Space between the back icon and other elements */
   align-items: center;
   height: 60px;
   padding: 10px 20px;
-  background: #ac5ff9; /* Violet with transparency */
-  backdrop-filter: blur(8px); /* Apply background blur */
+  background: #ac5ff9;
+  backdrop-filter: blur(8px);
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Make sure it stays on top of content */
+  z-index: 1000;
   transition: margin-left 0.5s;
   margin: 10px;
   margin-bottom: 10%;
 }
 
-.back-icon{
-  display: flex;
-  left: 0;
+/* .back-icon {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  display: inline;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Container for right-aligned elements */
+.back-icon:hover {
+  transform: scale(1.2);
+} */
+
+.back-icon {
+  position: relative;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 24px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 50px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+  font-size: 12px;
+}
+
+.back-icon:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transition: transform 0.3s ease;
+}
+
+.back-icon:hover{
+  transform: scale(1.2);
+}
+
+
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 20px; /* Add spacing between elements */
+  gap: 20px;
 }
 
-/* Style the menu button */
 .menu-btn {
   font-size: 24px;
   color: white;
@@ -47,26 +89,21 @@
   transform: scale(1.2);
 }
 
-/* Style the profile image */
 .circle-profile img {
   width: 30px;
   height: 30px;
-  border-radius: 50%; /* Make it circular */
+  border-radius: 50%;
   border: 2px solid white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .circle-profile img:hover {
   transform: scale(1.1);
 }
 
-.mgs-icon{
-  color: white;
-  width: 30px;
-  height: 30px;
-}
-.msg-box{
+.msg-box {
   font-size: 24px;
   color: white;
   cursor: pointer;
@@ -76,12 +113,33 @@
 .msg-box:hover {
   transform: scale(1.2);
 }
-/* Style the message icon */
 
+@media screen and (max-width: 768px) {
+  .header {
+    margin-left: 0;
+    padding: 10px;
+    justify-content: space-between;
+  }
 
-  @media screen and (max-width: 768px) {
-    .header {
-      margin-left: 0;
-      transition: margin-left 0.5s;
-    }
+  .back-icon {
+    display: none;
+  }
+
+  .nav-right {
+    justify-content: flex-end;
+    gap: 15px;
+    /* Ensure the right content is always aligned properly */
+    position: fixed;
+    right: 10px;
+  }
+
+  .menu-btn, .msg-box, .circle-profile {
+    font-size: 20px;
+    margin-left: auto;
+  }
+
+  .circle-profile img {
+    width: 25px;
+    height: 25px;
+  }
 }

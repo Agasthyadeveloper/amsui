@@ -1,1 +1,24 @@
-<p>project-marketing works!</p>
+<app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
+<app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
+<div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }">
+    <div style="margin-top: 10%;" class="container">
+        <div class="row">
+            <div class="col mt-5">
+                <div routerLink="/view-goals" class="projects-card">
+                    <img class="project-img" src="/assets/images/Anbu-Avenue.jpg" alt="">                   
+                    <div style="text-align: center; border: 1px solid white;padding: 5px;">
+                        <h4>komarapalayam</h4>
+                    </div>
+                </div>
+            </div>
+            <div routerLink="/view-goals" class="col mt-5">
+                <div class="projects-card">
+                    <img class="project-img" src="/assets/images/RVS.jpg" alt="">
+                    <div style="text-align: center; border: 1px solid white; padding: 5px;">
+                        <h4>Sangagiri</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './project-marketing.component.css'
 })
 export class ProjectMarketingComponent {
+  isSidebarOpen = true;
 
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
 }

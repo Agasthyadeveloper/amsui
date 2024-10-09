@@ -16,9 +16,13 @@
 </nav> -->
 
 <nav class="header" [ngStyle]="{ 'margin-left': !isSidebarOpen ? '260px' : '10px' }">
+    <!-- <div title="Back" class="back-icon">
+        <i (click)="goBack()" class="fa fa-chevron-circle-left"></i>
+    </div> -->
     <div class="back-icon">
         <i (click)="goBack()" class="fa fa-chevron-circle-left"></i>
-    </div>
+        <span class="tooltip-text">Back</span>
+    </div> 
     <div class="nav-right">
         <div class="menu-btn" (click)="toggleSidebar()">
             <ng-container *ngIf="!isSidebarOpen">
