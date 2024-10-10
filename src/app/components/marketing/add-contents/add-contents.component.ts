@@ -37,9 +37,10 @@ export class AddContentsComponent {
   }
 
   postcontenttracker: string = '';
-  updatecontenttracker: string = '';
+  createCollateraltracker: string = '';
   apifromservice(){
     this.postcontenttracker = this.apiService.getandpostcontenttracker()
+    this.createCollateraltracker = this.apiService.getandpostCollateraltracker()
   }
 
   cont_Task_name: string='';
