@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../../../../../services/api.service';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-view-goal',
@@ -18,7 +20,7 @@ export class ViewGoalComponent {
 
   currentCard: string | null = null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,private apiService: ApiService, private http: HttpClient) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -26,6 +28,20 @@ export class ViewGoalComponent {
     });
 
     console.log(this.currentCard);
+    this.getcontenttask()
+  }
+
+  getcontent: any[] = [];
+  getcontenttask(): void {
+    this.http.get<any>(this.apiService.getandpostcontenttracker()).subscribe(
+      (data) => {
+        this.getcontent = data;
+      },
+      (error) => {
+        console.error('Error fetching items', error);
+      }
+    );
+    console.log("im here",this.getcontent)
   }
   
 }

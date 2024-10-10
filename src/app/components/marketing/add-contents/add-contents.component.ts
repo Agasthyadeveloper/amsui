@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../../services/api.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-contents',
@@ -11,13 +12,12 @@ import { HttpClient } from '@angular/common/http';
 export class AddContentsComponent {
 
   // side bar
-
   isSidebarOpen = true;
-
+  
+  
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
-
   // end side bar
 
   selectedModule: string = '';
@@ -26,7 +26,7 @@ export class AddContentsComponent {
   currenttask: string | null = null;
   updatetask: string | null = null;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private http: HttpClient,private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -35,49 +35,120 @@ export class AddContentsComponent {
       console.log("current task:", this.currenttask)
       console.log("update task:", this.updatetask)
     });
-    this.loadItems();
+    this.apifromservice();
+    this.updatecontenttask();
   }
 
+  postcontenttracker: string = '';
+  updatecontenttracker: string = '';
+  apifromservice(){
+    this.postcontenttracker = this.apiService.getandpostcontenttracker()
+    this.updatecontenttracker = this.apiService.updatecontenttracker()
+  }
 
-  items: any[] = [];
-  loadItems(): void {
-    this.http.get<any>(this.apiService.getItemsUrl()).subscribe(
-      (data) => {
-        this.items = data;
+  cont_Task_name: string='';
+  cont_goal_start_date: Date | null = null;
+  cont_goal_end_date: Date | null = null;
+  cont_goal_no_of_days: string|null = null;
+  cont_goal_quality: number | undefined;
+  cont_goal_quantity: number | undefined;
+  cont_assigned_by: string='yoganandhan';
+  cont_assigned_to: string| null = null;
+
+  successmgs : boolean = false;
+  createcontenttask() {
+    const apiUrl = this.postcontenttracker;
+    const requestBody = {
+      "cont_Task_name": this.cont_Task_name,
+      "cont_goal_start_date": this.cont_goal_start_date,
+      "cont_goal_end_date": this.cont_goal_end_date,
+      "cont_goal_no_of_days": this.cont_goal_no_of_days,
+      "cont_goal_quality": this.cont_goal_quality,
+      "cont_goal_quantity": this.cont_goal_quantity,
+      "cont_assigned_by": this.cont_assigned_by,
+      "cont_assigned_to": this.cont_assigned_to,
+      "cont_status": "New",
+      "cont_model_name": this.currenttask,
+      "cont_project_id": 1,
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    this.http.post(apiUrl, requestBody, httpOptions).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.successmgs = true
+        setTimeout(() => {
+          this.successmgs = false; // Optionally hide the message
+          this.router.navigate(['/view-goals','Content tracker']); // Replace with your target route
+        }, 3000);
       },
-      (error) => {
-        console.error('Error fetching items', error);
+      (error: any) => {
+        console.log('Post request failed', error);
       }
     );
-    console.log("im here",this.items)
+  }
+
+  updatecontenttask() {
+    debugger
+    const apiUrl = this.updatecontenttracker+'1';
+    console.log("here is the id",apiUrl)
+    const requestBody = {
+      "cont_Task_name": this.cont_Task_name,
+      "cont_goal_start_date": this.cont_goal_start_date,
+      "cont_goal_end_date": this.cont_goal_end_date,
+      "cont_goal_no_of_days": this.cont_goal_no_of_days,
+      "cont_goal_quality": this.cont_goal_quality,
+      "cont_goal_quantity": this.cont_goal_quantity,
+      "cont_assigned_by": this.cont_assigned_by,
+      "cont_assigned_to": this.cont_assigned_to,
+      "cont_status": "New",
+      "cont_model_name": this.currenttask,
+      "cont_project_id": 1,
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    this.http.put(apiUrl, requestBody, httpOptions).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (error: any) => {
+        console.log('Post request failed', error);
+      }
+    );
   }
 
   startDate: string = '';
   endDate: string = '';
-  minEndDate: string = '';
+  minEndDate: Date | null = null;
   numberOfDaysText: string = '0 day';
 
   updateEndDateLimit() {
-    if (this.startDate) {
-      this.minEndDate = this.startDate;
+    if (this.cont_goal_start_date) {
+      this.minEndDate = this.cont_goal_start_date;
       this.calculateNumberOfDays();
     }
   }
 
   calculateNumberOfDays() {
-    if (this.startDate && this.endDate) {
-      const start = new Date(this.startDate);
-      const end = new Date(this.endDate);
+    if (this.cont_goal_start_date && this.cont_goal_end_date) {
+      const start = new Date(this.cont_goal_start_date);
+      const end = new Date(this.cont_goal_end_date);
 
       const timeDiff = end.getTime() - start.getTime();
       const numberOfDays = timeDiff >= 0 ? Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1 : 0;
       if (numberOfDays === 1) {
-        this.numberOfDaysText = `${numberOfDays} day`;
+        this.cont_goal_no_of_days = `${numberOfDays} day`;
       } else {
-        this.numberOfDaysText = `${numberOfDays} days`;
+        this.cont_goal_no_of_days = `${numberOfDays} days`;
       }
     } else {
-      this.numberOfDaysText = '0 day';
+      this.cont_goal_no_of_days = '0 day';
     }
   }
 }

@@ -35,71 +35,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Blogs</td>
-                            <td>11</td>
-                            <td>11</td>
-                            <td>2 Sept</td>
-                            <td>6 Sept</td>
-                            <td>5</td>
+                        <tr *ngFor="let item of getcontent; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.cont_Task_name}}</td>
+                            <td>{{item.cont_goal_quantity}}</td>
+                            <td>{{item.cont_goal_quality}}</td>
+                            <td>{{item.cont_goal_start_date}}</td>
+                            <td>{{item.cont_goal_end_date}}</td>
+                            <td>{{item.cont_goal_no_of_days}}</td>
                             <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
                         </tr>
-                        <tr class="table-row">
-                            <td>2</td>
-                            <td>Vlogs</td>
-                            <td>12</td>
-                            <td>12</td>
-                            <td>2 Sept</td>
-                            <td>3 Sept</td>
-                            <td>2</td>
-                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Posters</td>
-                            <td>120</td>
-                            <td>120</td>
-                            <td>2 Sept</td>
-                            <td>5 Sept</td>
-                            <td>3</td>
-                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Reels</td>
-                            <td>20</td>
-                            <td>20</td>
-                            <td>2 Sept</td>
-                            <td>4 Sept</td>
-                            <td>3</td>
-                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Testimonials</td>
-                            <td colspan="5">Nill</td>
-                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Case Study</td>
-                            <td colspan="5">Nill</td>
-                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
-                        </tr>
-                        <tr class="table-row">
-                            <td>7</td>
-                            <td>Contest</td>
-                            <td colspan="5">Nill</td>
-                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
-                        </tr>
-                        <tr class="table-row">
-                            <td>8</td>
-                            <td>Offers</td>
-                            <td colspan="5">Nill</td>
-                            <th [routerLink]="['/update-goal','Content Tracker']"><i class='far fa-edit'></i></th>
-                        </tr>
-                    </tbody>
+                        
+                        </tbody>
                 </table>
             </div>
         </div>

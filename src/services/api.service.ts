@@ -10,7 +10,12 @@ export class ApiService {
 
   constructor() { }
 
-  getItemsUrl(): string {
-    return `${this.apiUrl}get_post_content_tracker/`;
-}
+  getandpostcontenttracker(): string {
+    return `${this.apiUrl}marketing_content_tracker/`;
+  }
+
+  updatecontenttracker(): string {
+    return `${this.apiUrl}marketing_content_tracker/`;
+  }
+
 }
