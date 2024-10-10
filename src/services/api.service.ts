@@ -14,8 +14,8 @@ export class ApiService {
     return `${this.apiUrl}marketing_content_tracker/`;
   }
 
-  updatecontenttracker(): string {
-    return `${this.apiUrl}marketing_content_tracker/`;
+  getandpostCollateraltracker(): string {
+    return `${this.apiUrl}marketing_collateral_tracker/`;
   }
 
 }

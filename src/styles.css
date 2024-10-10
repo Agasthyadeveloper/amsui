@@ -25,6 +25,46 @@ body {
     border: #000000 1px solid;
 }
 
+.alert-card {
+    position: fixed;
+    top: 20px;
+    margin-left: 25%;
+    width: 300px;
+    background-color: #28a745; /* Green background for success */
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Make sure it appears above other elements */
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .alert-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
 /* .submit-btn {
     width: 100px;
     padding: 10px;
@@ -143,6 +183,10 @@ body {
     .content {
         margin-left: 0;
         transition: margin-left 0.5s;
+    }
+
+    .alert-card{
+       margin-left: 10%;
     }
 }
 

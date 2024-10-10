@@ -23,11 +23,6 @@ export class ViewGoalComponent {
   constructor(private route: ActivatedRoute,private apiService: ApiService, private http: HttpClient) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.currentCard = params['cardName'];
-    });
-
-    console.log(this.currentCard);
     this.getcontenttask()
   }
 
@@ -41,7 +36,6 @@ export class ViewGoalComponent {
         console.error('Error fetching items', error);
       }
     );
-    console.log("im here",this.getcontent)
   }
   
 }

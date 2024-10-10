@@ -2,20 +2,8 @@
 <app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
 <div class="content" [ngClass]="{ 'full-width': !isSidebarOpen }">
     <div class="container mob-res">
-        <!-- Dropdown for selecting module -->
-        <!-- <div class="form-group">
-            <label for="moduleSelect">Select Module</label>
-            <select class="custom-input" id="moduleSelect" [(ngModel)]="selectedModule">
-                <option value="" disabled>Select a Module</option>
-                <option *ngFor="let module of modules" [value]="module">{{module}}</option>
-            </select>
-        </div> -->
-
         <!-- Conditionally display the form based on the selected module -->
         <div *ngIf="currenttask === 'Content Tracker'|| updatetask ==='Content Tracker'" class="container mb-3 card-margin">
-            <!-- <div *ngIf="successmgs">
-                <h1>saved successfully</h1>
-            </div> -->
             <div *ngIf="successmgs" class="alert-card fade-in">
                 <div class="alert-content">
                   <strong>Success!</strong> Saved Successfully.
@@ -82,48 +70,45 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Task Name:</label>
-                            <input type="text" class="custom-input" placeholder="Enter quantity" />
+                            <input [value]="cont_Task_name" [(ngModel)]="cont_Task_name" type="text" class="custom-input" placeholder="Enter quantity" />
                         </div>
                         <div class="col-md-6">
                             <label>Task Quantity:</label>
-                            <input type="number" class="custom-input" placeholder="Enter quantity" />
+                            <input [(ngModel)]="cont_goal_quantity" type="number" class="custom-input" placeholder="Enter quantity" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Task Quality:</label>
-                            <input type="text" class="custom-input" placeholder="Enter quality" />
+                            <input type="number" [(ngModel)]="cont_goal_quality" class="custom-input" placeholder="Enter quality" />
                         </div>
                         <div class="col-md-6">
-                            <label>Cost:</label>
-                            <input type="text" class="custom-input" placeholder="Enter quality" />
+                            <label>Start Date:</label>
+                            <input type="date" class="custom-input" [(ngModel)]="cont_goal_start_date" name="startDate"
+                                (change)="updateEndDateLimit()" />
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label>Start Date:</label>
-                            <input type="date" class="custom-input" [(ngModel)]="startDate" name="startDate"
-                                (change)="updateEndDateLimit()" />
-                        </div>
                         <div class="col-md-6">
                             <label>End Date <span style="font-size: 10px;color: red;">(End date cannot be before start
                                     date)</span> :</label>
-                            <input type="date" class="custom-input" [(ngModel)]="endDate" name="endDate"
+                            <input type="date" class="custom-input" [(ngModel)]="cont_goal_end_date" name="endDate"
                                 [min]="minEndDate" (change)="calculateNumberOfDays()" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Number of Dates:</label>
+                            <input type="text" class="custom-input" [(ngModel)]="cont_goal_no_of_days"
+                                name="numberOfDaysText" readonly />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>Number of Dates:</label>
-                            <input type="text" class="custom-input" [(ngModel)]="numberOfDaysText"
-                                name="numberOfDaysText" readonly />
+                            <label>Assign to:</label>
+                            <input  type="text" class="custom-input" [(ngModel)]="cont_assigned_to" placeholder="Enter name" />
                         </div>
-                        <div class="col-md-6">
-                            <label>Assigned By:</label>
-                            <input type="text" class="custom-input" placeholder="Enter name" />
-                        </div>
+                        <div class="col-md-6"></div>
                     </div>
-                    <button class="submit-btn">Create</button>
+                    <button (click)="createcontenttask()" class="submit-btn">Create</button>
                 </div>
             </div>
         </div>

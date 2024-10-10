@@ -32,18 +32,14 @@ export class AddContentsComponent {
     this.route.params.subscribe(params => {
       this.currenttask = params['taskName'];
       this.updatetask = params['updatetask'];
-      console.log("current task:", this.currenttask)
-      console.log("update task:", this.updatetask)
     });
     this.apifromservice();
-    this.updatecontenttask();
   }
 
   postcontenttracker: string = '';
   updatecontenttracker: string = '';
   apifromservice(){
     this.postcontenttracker = this.apiService.getandpostcontenttracker()
-    this.updatecontenttracker = this.apiService.updatecontenttracker()
   }
 
   cont_Task_name: string='';
@@ -82,7 +78,7 @@ export class AddContentsComponent {
         this.successmgs = true
         setTimeout(() => {
           this.successmgs = false; // Optionally hide the message
-          this.router.navigate(['/view-goals','Content tracker']); // Replace with your target route
+          this.router.navigate(['/view-goals']); // Replace with your target route
         }, 3000);
       },
       (error: any) => {
@@ -91,19 +87,26 @@ export class AddContentsComponent {
     );
   }
 
-  updatecontenttask() {
-    debugger
-    const apiUrl = this.updatecontenttracker+'1';
-    console.log("here is the id",apiUrl)
+  col_Task_name: string='';
+  col_goal_start_date: Date | null = null;
+  col_goal_end_date: Date | null = null;
+  col_goal_no_of_days: string|null = null;
+  col_goal_quality: number | undefined;
+  col_goal_quantity: number | undefined;
+  col_assigned_by: string='yoganandhan';
+  col_assigned_to: string| null = null;
+
+  createCollateraltask() {
+    const apiUrl = this.postcontenttracker;
     const requestBody = {
-      "cont_Task_name": this.cont_Task_name,
-      "cont_goal_start_date": this.cont_goal_start_date,
-      "cont_goal_end_date": this.cont_goal_end_date,
-      "cont_goal_no_of_days": this.cont_goal_no_of_days,
-      "cont_goal_quality": this.cont_goal_quality,
-      "cont_goal_quantity": this.cont_goal_quantity,
-      "cont_assigned_by": this.cont_assigned_by,
-      "cont_assigned_to": this.cont_assigned_to,
+      "cont_Task_name": this.col_Task_name,
+      "cont_goal_start_date": this.col_goal_start_date,
+      "cont_goal_end_date": this.col_goal_end_date,
+      "cont_goal_no_of_days": this.col_goal_no_of_days,
+      "cont_goal_quality": this.col_goal_quality,
+      "cont_goal_quantity": this.col_goal_quantity,
+      "cont_assigned_by": this.col_assigned_by,
+      "cont_assigned_to": this.col_assigned_to,
       "cont_status": "New",
       "cont_model_name": this.currenttask,
       "cont_project_id": 1,
@@ -113,15 +116,21 @@ export class AddContentsComponent {
         'Content-Type': 'application/json'
       })
     };
-    this.http.put(apiUrl, requestBody, httpOptions).subscribe(
+    this.http.post(apiUrl, requestBody, httpOptions).subscribe(
       (response: any) => {
         console.log(response);
+        this.successmgs = true
+        setTimeout(() => {
+          this.successmgs = false; // Optionally hide the message
+          this.router.navigate(['/view-goals']); // Replace with your target route
+        }, 3000);
       },
       (error: any) => {
         console.log('Post request failed', error);
       }
     );
   }
+
 
   startDate: string = '';
   endDate: string = '';
